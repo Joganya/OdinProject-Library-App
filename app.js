@@ -21,7 +21,20 @@ let myLibrary=[
     title:'how to make it',
     pagesRead:10,
     read:'no'
+},
+{
+    author:'ganya',
+    title:'how to make it',
+    pagesRead:10,
+    read:'no'
+},
+{
+    author:'ganya',
+    title:'how to make it',
+    pagesRead:10,
+    read:'no'
 }
+
 
 ];
 
@@ -31,6 +44,11 @@ function createBookElement(book,index){
     const div=document.createElement('div');
     div.setAttribute('id',index);
     div.classList.add('.books');
+    //styling div
+    div.style.padding='50px 0 50px 20px';
+    div.style.margin='10px';
+    div.style.backgroundColor='blue';
+    
     //create book author element and append to div
     const book_author=document.createElement('div');
     book_author.setAttribute('id',`author${index}`);
@@ -55,21 +73,23 @@ function createBookElement(book,index){
     const delete_button=document.createElement('div');
     delete_button.textContent='Delete';
     delete_button.setAttribute('id',`delete_button${index}`);
-    delete_button.addEventListener('click',deleteBook)
+    delete_button.addEventListener('click',()=>{
+        //delete function
+        myLibrary.splice(index,1);
+        console.log(myLibrary);
+        renderBooks(); 
+    })
     div.appendChild(delete_button);
-
+console.log(div);
 //append div to html element
     display_books.appendChild(div);
 
 
 };
 
-//delete book function
-function deleteBook(index){
-    myLibrary.splice(index,1);
-    console.log(myLibrary)
-    renderBooks() 
-}
+
+
+
 //function to render books from array library to the display
 function renderBooks(){
 
