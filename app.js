@@ -1,4 +1,6 @@
 const display_books=document.querySelector('#book-display');
+const display_modal=document.querySelector('#add-button');
+const modal=document.querySelector('#modal-background');
 
 
 
@@ -48,7 +50,7 @@ function createBookElement(book,index){
     //style created div
     div.style.padding='50px 10px 50px 10px';
     div.style.margin='10px';
-    div.style.backgroundColor='blue';
+    div.style.backgroundColor='white';
     div.style.borderRadius='7px'
     div.style.boxShadow='rgba(50,50,93,0.25) 0px 13px 27px -5px, rgba(0,0,0,0.3) 0px 8px 16px -8px';
    
@@ -102,6 +104,10 @@ console.log(div);
     display_books.appendChild(div);
 };
 
+//to display modal
+display_modal.addEventListener('click',()=>{
+modal.style.display='block';
+});
 
 
 
