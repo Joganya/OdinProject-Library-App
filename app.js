@@ -18,7 +18,16 @@ function Books(author,title,numberOfPages,read){
     this.author=author,
     this.title=title,
     this.numberOfPages=numberOfPages,
-    this.read=read
+    this.read=read;
+};
+
+Books.prototype.confirmCheck= function(){
+if(this.read===false){
+this.read=true;
+console.log(this.read);
+}else{
+    this.read=false;
+}
 };
 
 
@@ -32,7 +41,7 @@ function createBookElement(book,index){
     //style created div
     div.style.padding='50px 10px 50px 10px';
     div.style.margin='10px';
-    div.style.backgroundColor='white';
+    div.style.backgroundColor='orange';
     div.style.borderRadius='7px'
     div.style.boxShadow='rgba(50,50,93,0.25) 0px 13px 27px -5px, rgba(0,0,0,0.3) 0px 8px 16px -8px';
    
@@ -68,6 +77,10 @@ function createBookElement(book,index){
     const book_checkbox=document.createElement('input');
     book_checkbox.setAttribute('id',`checkbox${index}`);
     book_checkbox.setAttribute('type','checkbox');
+    book_checkbox.addEventListener('click',()=>{
+        myLibrary[index].confirmCheck();
+        console.log(myLibrary[index].read)
+    });
     book_checkbox.checked=myLibrary[index].read;
     theCheckBox.appendChild(book_checkbox);
     
@@ -116,6 +129,5 @@ function pushBook(){
 //call book function on click
 submitModal.addEventListener('click',()=>{
     pushBook();
-    console.log(getPages.value);
 })
 
